@@ -16,11 +16,25 @@ fun main() {
         }
     }
 
-    fun part2(input: List<String>): Int {
-        return 0
+    fun part2(input: String): Long {
+        var isEnabled = true
+        return input.let {
+            Regex("""do\(\)|don't\(\)|mul\(\d{1,3},\d{1,3}\)""").findAll(it)
+        }.filter {
+            when {
+                it.value.startsWith("don") -> isEnabled = false
+                it.value.startsWith("do") -> isEnabled = true
+            }
+            isEnabled
+        }.filter {
+            it.value.startsWith("mul")
+        }.map {
+            it.value.substringAfter("(").substringBefore(")").trim().split(",").map { it.toLong() }
+                .reduce { acc, l ->  acc * l }
+        }.sum()
     }
 
     val input = readText("day03/Day03")
     part1(input).println()
-//    part2(input).println()
+    part2(input).println()
 }
