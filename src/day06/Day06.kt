@@ -97,7 +97,7 @@ private data class Area(val input: List<String>) {
         return visited
     }
 
-    private fun isCycle(): Boolean {
+    private fun cycleDetected(): Boolean {
         val visited = mutableSetOf<Pair<Coord, GuardDir>>()
         var curDir = guard.pos
         var curCoord = guard.coord
@@ -127,18 +127,12 @@ private data class Area(val input: List<String>) {
     }
 
     fun loops(): Int {
-        val blockers = findAllVistingPosition()
-        var loops = 0
-        blockers.forEach {
-            if (graph[it.x][it.y] == EMPTY) {
-                graph[it.x][it.y] = OBSTRUCTION
-                if (isCycle()) {
-                    loops++
-                }
-            }
+        return findAllVistingPosition().map {
+            graph[it.x][it.y] = OBSTRUCTION
+            val cycle = cycleDetected()
             graph[it.x][it.y] = EMPTY
-        }
-        return loops
+            if (cycle) 1 else 0
+        }.sum()
     }
 }
 
