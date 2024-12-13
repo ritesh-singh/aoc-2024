@@ -1,18 +1,11 @@
 package day10
 
+import Coord
+import all
+import inRange
 import println
 import readInput
 import kotlin.math.abs
-
-data class Coord(val x: Int, val y: Int)
-
-fun Coord.inRange(grid: List<String>) = x in grid.indices && y in grid[0].indices
-
-fun Coord.up() = Coord(x - 1, y)
-fun Coord.down() = Coord(x + 1, y)
-fun Coord.left() = Coord(x, y - 1)
-fun Coord.right() = Coord(x, y + 1)
-fun Coord.all() = listOf(up(),down(),left(),right())
 
 class LavaProductionFacility(val input: List<String>) {
     val graph = input.map { it.toCharArray().map { it.digitToIntOrNull() ?: 78 } }
