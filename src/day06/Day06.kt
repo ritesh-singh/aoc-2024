@@ -15,7 +15,7 @@ private enum class GuardDir {
 private val OBSTRUCTION = '#'
 private val EMPTY = '.'
 
-data class Coord(val x: Int, val y: Int) {
+private data class Coord(val x: Int, val y: Int) {
     fun up() = Coord(x - 1, y)
     fun down() = Coord(x + 1, y)
     fun left() = Coord(x, y - 1)
