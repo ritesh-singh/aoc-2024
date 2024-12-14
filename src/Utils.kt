@@ -32,3 +32,7 @@ fun Coord.down() = Coord(x + 1, y)
 fun Coord.left() = Coord(x, y - 1)
 fun Coord.right() = Coord(x, y + 1)
 fun Coord.all() = listOf(up(),down(),left(),right())
+
+enum class Env {
+    TEST, REAL
+}
