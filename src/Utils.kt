@@ -23,6 +23,27 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
 fun Any?.println() = println(this)
 
 
+fun printGrid(grid: Any) {
+    when (grid) {
+        is List<*> -> {
+            if (grid.isEmpty()) throw IllegalStateException("Can't print empty grid")
+            when(val fE = grid.first()){
+                is String -> {
+                    for (row in grid) println(row)
+                }
+                is List<*> -> {
+                    for (row in grid)
+                        println((row as List<*>).joinToString(" ") { it.toString() })
+                }
+                is CharArray -> {
+                    for (row in grid) println(row.toString())
+                }
+                else -> throw IllegalArgumentException("Unsupported grid type")
+            }
+        }
+    }
+}
+
 data class Coord(val x: Int, val y: Int) {
     override fun toString(): String {
         return "($x, $y)"
@@ -36,7 +57,6 @@ fun Coord.down() = Coord(x + 1, y)
 fun Coord.left() = Coord(x, y - 1)
 fun Coord.right() = Coord(x, y + 1)
 fun Coord.all() = listOf(up(),down(),left(),right())
-
 
 /**
  *  Helper utils for Coords in row and column to avoid confusion
@@ -53,6 +73,13 @@ fun CoordRC.left() = CoordRC(row, col - 1)
 fun CoordRC.right() = CoordRC(row, col + 1)
 fun CoordRC.all() = listOf(up(),down(),left(),right())
 
+enum class DirectionLRUD {
+    L,R,U,D
+}
+
+enum class DirectionP {
+    E,W,N,S
+}
 
 enum class Env {
     TEST, REAL
