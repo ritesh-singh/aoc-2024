@@ -13,8 +13,6 @@ private class LinenLayout(private val env: Env = Env.TEST) {
     private val patterns = input.take(1)[0].split(",").map { it.trim() }
     private val designs = input.drop(2)
 
-    private fun String.exists() = patterns.find { it == this } != null
-
     private fun ways(design: String, seen:MutableMap<String,Long>): Long {
         if (design.isEmpty()) return 1
         if (seen.containsKey(design)) return seen[design]!!
