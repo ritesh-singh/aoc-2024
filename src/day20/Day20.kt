@@ -24,14 +24,12 @@ private class RaceCondition(private val env: Env = Env.TEST) {
         .map { it.toCharArray() }
     private val inRange: (CoordRC) -> Boolean = { coord -> coord.row in input.indices && coord.col in input[0].indices }
 
-    private val blockers = mutableListOf<CoordRC>()
     lateinit var start: CoordRC
     lateinit var end: CoordRC
 
     init {
         input.forEachIndexed { row, s ->
             s.withIndex().forEach { (col, c) ->
-                if (c == '#') blockers.add(CoordRC(row, col))
                 if (c == 'S') start = CoordRC(row, col)
                 if (c == 'E') end = CoordRC(row, col)
             }
