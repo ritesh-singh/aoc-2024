@@ -10,8 +10,8 @@ sealed class Block {
     data class File(val id: Int, val count: Int) : Block()
     data class Space(val uId: String, val count: Int) : Block()
 }
-typealias File = Block.File
-typealias Space = Block.Space
+private typealias File = Block.File
+private typealias Space = Block.Space
 
 fun main() {
     fun part2(input: String): Long {
