@@ -1,7 +1,18 @@
 rootProject.name = "aoc-2024"
 
-dependencyResolutionManagement {
+pluginManagement {
     repositories {
+        google()
         mavenCentral()
     }
 }
+
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+
+include(":animations:day01")
