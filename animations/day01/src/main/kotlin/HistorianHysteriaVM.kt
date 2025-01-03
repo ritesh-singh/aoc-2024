@@ -1,4 +1,12 @@
 package day01
 
-class HistorianHysteriaVM {
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+
+class HistorianHysteriaVM(
+    parentCoroutineScope: CoroutineScope,
+) {
+    private val coroutineScope = CoroutineScope(SupervisorJob(parentCoroutineScope.coroutineContext[Job]))
+    
 }

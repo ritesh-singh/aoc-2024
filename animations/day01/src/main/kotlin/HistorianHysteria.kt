@@ -2,15 +2,14 @@
 
 package day01
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import com.jakewharton.mosaic.runMosaicBlocking
 
-
-@Composable
-fun Counter(){
-
-}
-
-fun main() = runMosaicBlocking {
-    Counter()
+fun main() {
+    runMosaicBlocking {
+        val coroutineScope = rememberCoroutineScope()
+        val vM = remember { HistorianHysteriaVM(coroutineScope) }
+        HistorianHysteriaScreen(vM)
+    }
 }
