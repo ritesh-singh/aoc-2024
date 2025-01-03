@@ -11,4 +11,5 @@ application {
 dependencies {
     implementation("com.github.shiguruikai:combinatoricskt:1.6.0")
     implementation("com.jakewharton.mosaic:mosaic-runtime:0.14.0")
+    implementation("com.jakewharton.mosaic:mosaic-animation:0.14.0")
 }
