@@ -8,5 +8,6 @@ class HistorianHysteriaVM(
     parentCoroutineScope: CoroutineScope,
 ) {
     private val coroutineScope = CoroutineScope(SupervisorJob(parentCoroutineScope.coroutineContext[Job]))
-    
+
+    fun getList():List<String> = listOf("*","a","b","c")
 }
